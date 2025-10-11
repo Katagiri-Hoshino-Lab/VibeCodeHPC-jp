@@ -3,13 +3,13 @@
     "Stop": [{
       "hooks": [{
         "type": "command",
-        "command": "python3 .claude/hooks/stop.py"
+        "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/stop.py"
       }]
     }],
     "SessionStart": [{
       "hooks": [{
         "type": "command",
-        "command": "python3 .claude/hooks/session_start.py"
+        "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/session_start.py"
       }]
     }]
   }

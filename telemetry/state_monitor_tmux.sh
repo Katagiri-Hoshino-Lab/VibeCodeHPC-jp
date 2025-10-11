@@ -58,9 +58,9 @@ on_state_changed() {
 
     # Stopイベント相当（busy/waiting → idle）
     if [ "$new_state" = "idle" ] && [ "$old_state" != "idle" ]; then
-        if [ -f ".claude/hooks/stop.py" ]; then
+        if [ -f "$CLAUDE_PROJECT_DIR/.claude/hooks/stop.py" ]; then
             echo "[state_monitor] Calling Stop hook"
-            echo '{}' | python3 ".claude/hooks/stop.py" 2>/dev/null || true
+            echo '{}' | python3 "$CLAUDE_PROJECT_DIR/.claude/hooks/stop.py" 2>/dev/null || true
         fi
     fi
 }
@@ -68,9 +68,9 @@ on_state_changed() {
 echo "[state_monitor] Starting for $AGENT_ID (pane: $PANE_ID)"
 
 # SessionStart hook実行（起動時1回のみ）
-if [ -f ".claude/hooks/session_start.py" ]; then
+if [ -f "$CLAUDE_PROJECT_DIR/.claude/hooks/session_start.py" ]; then
     echo "[state_monitor] Calling SessionStart hook"
-    echo '{}' | python3 ".claude/hooks/session_start.py" 2>/dev/null || true
+    echo '{}' | python3 "$CLAUDE_PROJECT_DIR/.claude/hooks/session_start.py" 2>/dev/null || true
 fi
 
 # PostToolUse監視用の最終チェック時刻
@@ -98,10 +98,10 @@ check_post_tool_use() {
 
     if [ -n "$recent_tools" ]; then
         # Bash tool_useが見つかった場合、post_tool_ssh_handler.pyを呼ぶ
-        if [ -f ".claude/hooks/post_tool_ssh_handler.py" ]; then
+        if [ -f "$CLAUDE_PROJECT_DIR/.claude/hooks/post_tool_ssh_handler.py" ]; then
             echo "[state_monitor] Detected Bash tool use, calling PostToolUse hook"
             # 最新のtool_use行全体を取得してstdinに渡す
-            tail -10 "$jsonl_file" 2>/dev/null | grep '"type":"tool_use"' | tail -1 | python3 ".claude/hooks/post_tool_ssh_handler.py" 2>/dev/null || true
+            tail -10 "$jsonl_file" 2>/dev/null | grep '"type":"tool_use"' | tail -1 | python3 "$CLAUDE_PROJECT_DIR/.claude/hooks/post_tool_ssh_handler.py" 2>/dev/null || true
         fi
     fi
 }

@@ -78,19 +78,19 @@ elif [ "$AGENT_ID" = "SOLO" ]; then
       "matcher": "mcp__desktop-commander__start_process|Bash",
       "hooks": [{
         "type": "command",
-        "command": "python3 .claude/hooks/post_tool_ssh_handler.py"
+        "command": "python3 \"\$CLAUDE_PROJECT_DIR\"/.claude/hooks/post_tool_ssh_handler.py"
       }]
     }],
     "Stop": [{
       "hooks": [{
         "type": "command",
-        "command": "python3 .claude/hooks/stop.py"
+        "command": "python3 \"\$CLAUDE_PROJECT_DIR\"/.claude/hooks/stop.py"
       }]
     }],
     "SessionStart": [{
       "hooks": [{
         "type": "command",
-        "command": "python3 .claude/hooks/session_start.py"
+        "command": "python3 \"\$CLAUDE_PROJECT_DIR\"/.claude/hooks/session_start.py"
       }]
     }]
   }
@@ -115,19 +115,19 @@ elif [ "$AGENT_TYPE" = "polling" ] || [[ "$AGENT_ID" =~ ^PG ]]; then
       "matcher": "mcp__desktop-commander__start_process|Bash",
       "hooks": [{
         "type": "command",
-        "command": "python3 .claude/hooks/post_tool_ssh_handler.py"
+        "command": "python3 \"\$CLAUDE_PROJECT_DIR\"/.claude/hooks/post_tool_ssh_handler.py"
       }]
     }],
     "Stop": [{
       "hooks": [{
         "type": "command",
-        "command": "python3 .claude/hooks/stop.py"
+        "command": "python3 \"\$CLAUDE_PROJECT_DIR\"/.claude/hooks/stop.py"
       }]
     }],
     "SessionStart": [{
       "hooks": [{
         "type": "command",
-        "command": "python3 .claude/hooks/session_start.py"
+        "command": "python3 \"\$CLAUDE_PROJECT_DIR\"/.claude/hooks/session_start.py"
       }]
     }]
   }
@@ -144,19 +144,19 @@ else
       "matcher": "mcp__desktop-commander__start_process|Bash",
       "hooks": [{
         "type": "command",
-        "command": "python3 .claude/hooks/post_tool_ssh_handler.py"
+        "command": "python3 \"\$CLAUDE_PROJECT_DIR\"/.claude/hooks/post_tool_ssh_handler.py"
       }]
     }],
     "Stop": [{
       "hooks": [{
         "type": "command",
-        "command": "python3 .claude/hooks/stop.py"
+        "command": "python3 \"\$CLAUDE_PROJECT_DIR\"/.claude/hooks/stop.py"
       }]
     }],
     "SessionStart": [{
       "hooks": [{
         "type": "command",
-        "command": "python3 .claude/hooks/session_start.py"
+        "command": "python3 \"\$CLAUDE_PROJECT_DIR\"/.claude/hooks/session_start.py"
       }]
     }]
   }

@@ -62,7 +62,9 @@ if [ "$CLI_HOOKS_MODE" = "custom" ]; then
     # settings.local.jsonを空のhooksで作成（Claude起動前なので既存設定は存在しない）
     cat > "$AGENT_DIR/.claude/settings.local.json" << EOF
 {
-  "hooks": {}
+  "envs": {
+    "DISABLE_AUTOUPDATER": "1"
+  }
 }
 EOF
     echo "✅ Custom hooks mode configured (hooks will be called by state monitor)"
@@ -93,6 +95,9 @@ elif [ "$AGENT_ID" = "SOLO" ]; then
         "command": "python3 \"\$CLAUDE_PROJECT_DIR\"/.claude/hooks/session_start.py"
       }]
     }]
+  },
+  "envs": {
+    "DISABLE_AUTOUPDATER": "1"
   }
 }
 EOF
@@ -130,6 +135,9 @@ elif [ "$AGENT_TYPE" = "polling" ] || [[ "$AGENT_ID" =~ ^PG ]]; then
         "command": "python3 \"\$CLAUDE_PROJECT_DIR\"/.claude/hooks/session_start.py"
       }]
     }]
+  },
+  "envs": {
+    "DISABLE_AUTOUPDATER": "1"
   }
 }
 EOF
@@ -159,6 +167,9 @@ else
         "command": "python3 \"\$CLAUDE_PROJECT_DIR\"/.claude/hooks/session_start.py"
       }]
     }]
+  },
+  "envs": {
+    "DISABLE_AUTOUPDATER": "1"
   }
 }
 EOF

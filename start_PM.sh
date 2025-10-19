@@ -99,7 +99,7 @@ echo ""
 # テレメトリ設定に基づいてClaude起動
 if [ "${VIBECODE_ENABLE_TELEMETRY}" = "false" ]; then
     echo "📊 Telemetry disabled - starting PM without telemetry"
-    exec DISABLE_AUTOUPDATER=1 claude --dangerously-skip-permissions "$@"
+    exec env DISABLE_AUTOUPDATER=1 claude --dangerously-skip-permissions "$@"
 else
     echo "📊 Telemetry enabled - starting PM with telemetry"
     exec "$PROJECT_ROOT/telemetry/launch_claude_with_env.sh" PM "$@"

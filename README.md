@@ -115,7 +115,7 @@ flowchart TB
       subgraph CommonFlow["🔄 共通処理フロー"]
           LaunchClaude[launch_claude_with_env.sh]
           LaunchClaude -->|1.hooks設定判定| SetupHooks[setup_agent_hooks.sh]
-          LaunchClaude -->|2.telemetry設定判定| EnvSetup[環境変数設定<br/>.env読み込み]
+          LaunchClaude -->|2.telemetry設定判定| EnvSetup[環境変数設定<br/>.DISABLE_AUTOUPDATER=1]
           LaunchClaude -->|3.claude --dangerously-skip-permissions| Claude[claude --dangerously-skip-permissions]
       end
 
@@ -617,7 +617,7 @@ PMを起動
 ./telemetry/launch_claude_with_env.sh PM
 
 # 最小構成（hooks・telemetryなし）
-claude --dangerously-skip-permissions
+DISABLE_AUTOUPDATER=1 claude --dangerously-skip-permissions
 
 # telemetryのみ無効化（PM起動時）
 VIBECODE_ENABLE_TELEMETRY=false ./start_PM.sh

@@ -46,7 +46,7 @@
    ```
 2. PMも無応答なら直接蘇生
    ```bash
-   ./communication/agent_send.sh [対象ID] "claude --continue --dangerously-skip-permissions"
+   ./communication/agent_send.sh [対象ID] "DISABLE_AUTOUPDATER=1 claude --continue --dangerously-skip-permissions"
    ```
 3. 蘇生後、ToDoリストとChangeLog確認を促す
 

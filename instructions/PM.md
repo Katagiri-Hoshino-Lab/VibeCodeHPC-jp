@@ -608,10 +608,10 @@ agent_send.sh SE1 "!agent-send.sh PM 'SE1 alive at $(date)'"
 #### 2. エージェントの再起動
 ```bash
 # 該当ペインで以下を実行（--continueオプションで記憶を維持）
-claude --dangerously-skip-permissions --continue
+DISABLE_AUTOUPDATER=1 claude --dangerously-skip-permissions --continue
 
 # または -c（短縮形）
-claude --dangerously-skip-permissions -c
+DISABLE_AUTOUPDATER=1 claude --dangerously-skip-permissions -c
 ```
 
 #### 3. telemetry付きでの再起動

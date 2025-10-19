@@ -150,7 +150,7 @@ fi
 # テレメトリ設定に基づいてClaude起動
 if [ "${VIBECODE_ENABLE_TELEMETRY}" = "false" ]; then
     echo "📊 Telemetry disabled - starting agent without telemetry"
-    exec claude --dangerously-skip-permissions "$@"
+    exec DISABLE_AUTOUPDATER=1 claude --dangerously-skip-permissions "$@"
 else
     echo "📊 Telemetry enabled - starting agent with telemetry"
     exec "$VIBECODE_ROOT/telemetry/launch_claude_with_env.sh" "$AGENT_ID" "$@"

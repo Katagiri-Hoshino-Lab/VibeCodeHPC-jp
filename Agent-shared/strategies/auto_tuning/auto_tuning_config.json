@@ -210,7 +210,7 @@
       "全エージェント巡回（3-5分間隔）",
       "tmux list-panes -t Team1_Workers1、Team1_PM等で各セッション監視",
       "無応答エージェント確認: !./communication/agent_send.sh [PM宛] '生存確認応答'を送信",
-      "応答なしの場合のみ蘇生（claude --continue --dangerously-skip-permissions）",
+      "応答なしの場合のみ蘇生（DISABLE_AUTOUPDATER=1 claude --continue --dangerously-skip-permissions）",
       "終盤管理: 必要に応じてEscキーで一時停止制御",
       "agent_and_pane_id_table.jsonl確認",
       "エージェント間通信ログ確認(communication/logs/send_log.txt)",

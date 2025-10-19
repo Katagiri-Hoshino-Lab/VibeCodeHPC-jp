@@ -128,7 +128,7 @@ if [ "$HOOKS_MODE" = "custom" ] || [ "$HOOKS_MODE" = "hybrid" ]; then
 fi
 
 # Claude Codeを起動
-echo "Starting claude with options: --dangerously-skip-permissions $@"
+echo "Starting claude with options: DISABLE_AUTOUPDATER=1 --dangerously-skip-permissions $@"
 echo "Current directory: $CURRENT_DIR"
 echo ""
 echo "⚠️  Note: OpenTelemetry metrics are sent to OTLP endpoint"
@@ -136,7 +136,7 @@ echo "    Configure your collector at: $OTEL_EXPORTER_OTLP_ENDPOINT"
 echo ""
 
 # Claude Codeを起動（リダイレクトなし）
-claude --dangerously-skip-permissions "$@"
+DISABLE_AUTOUPDATER=1 claude --dangerously-skip-permissions "$@"
 
 # 終了時の処理
 echo ""
